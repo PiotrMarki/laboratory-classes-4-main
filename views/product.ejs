@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title><%= headTitle %></title>
+</head>
+<body>
+  <h1><%= product.name %></h1>
+
+  <div>
+    <p><%= product.description %></p>
+  </div>
+
+  <button onclick="deleteProduct('<%= product.name %>')">Delete</button>
+
+  <script>
+    function deleteProduct(name) {
+      if (confirm(`Czy na pewno chcesz usunąć produkt "${name}"?`)) {
+        fetch(`/products/${name}`, {
+          method: 'DELETE'
+        })
+        .then(response => {
+          if (response.ok) {
+            window.location.href = "/products"; 
+          } else {
+            alert("Nie udało się usunąć produktu.");
+          }
+        })
+        .catch(() => alert("Wystąpił błąd."));
+      }
+    }
+  </script>
+</body>
+</html>

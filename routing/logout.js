@@ -1,6 +1,6 @@
 const express = require("express");
 
-const { LOGOUT_LINKS } = require("../constants/navigation");
+const logoutController = require('../controllers/logoutControlle.js');
 
 const router = express.Router();
 
@@ -9,7 +9,7 @@ router.get("/", (_request, response) => {
     headTitle: "Shop - Logout",
     path: "/logout",
     activeLinkPath: "/logout",
-    menuLinks: LOGOUT_LINKS,
+    menuLinks: logoutController.js,
   });
 });
 
